@@ -68,7 +68,7 @@ walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
   pub = nh.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1);
   subs = nh.subscribe<sensor_msgs::LaserScan>("/scan", 1000,
                                               &walker::laserScanCallback, this);
-  ros::Rate loopRate(5)
+  ros::Rate loopRate(5);
   while (ros::ok()) {
     // Initialize twist
     twist.linear.x = 0;
@@ -79,7 +79,7 @@ walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
     twist.angular.z = 0;
     if (obstacleInRange()) {
       ROS_INFO_STREAM("The obstacle is in the range, Turning...");
-      twist.linear.x = 0.0
+      twist.linear.x = 0.0;
       twist.angular.z = angularVel;
     } else {
       ROS_INFO_STREAM("Moving forward, No obstacle present");
@@ -91,5 +91,9 @@ walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
     loopRate.sleep();
   }
 
+}
+
+walker::~walker() {
+  std::cout << "Destructor called !";
 }
 

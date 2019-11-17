@@ -6,8 +6,8 @@
 	<include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch"></include>
 
 	<node
+	    pkg="Turtlebot-walker-algorithm"
 		name="walker"
-		pkg="Turtlebot-walker-algorithm"
 		type="walker"
 		output="screen"
 		launch-prefix="xterm -e"
@@ -17,7 +17,7 @@
 		pkg="rosbag"
 		name="record"
 		type="record"
-		args="-a -O $(find beginner_tutorials)/results/record.bag"
+		args="-a -O $(find Turtlebot-walker-algorithm)/Results/record.bag"
 		if="$(eval record == 'enable')"
 	/>
 
