@@ -1,0 +1,24 @@
+<launch>
+	<arg
+		name="record"
+		default="disable"
+	/>
+	<include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch"></include>
+
+	<node
+		name="walker"
+		pkg="Turtlebot-walker-algorithm"
+		type="walker"
+		output="screen"
+		launch-prefix="xterm -e"
+	/>
+
+	<node
+		pkg="rosbag"
+		name="record"
+		type="record"
+		args="-a -O $(find beginner_tutorials)/results/record.bag"
+		if="$(eval record == 'enable')"
+	/>
+
+</launch>
