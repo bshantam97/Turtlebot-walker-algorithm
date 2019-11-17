@@ -31,6 +31,7 @@
 
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
+#include <geometry_msgs/Twist.h>
 
 class walker {
  public:
@@ -58,7 +59,17 @@ class walker {
   bool obstacleInRange();
 
  private:
+  //bool variable to signify whether object is in range or not
   bool obstacleRange;
+
+  //Object to get linear and angular velocity
+  geometry_msgs::Twist twist;
+
+  //Turtlebot linear velocity
+  float linearVel;
+
+  //Turtlebot angular velocty
+  float angularVel;
 };
 
 #endif /*INCLUDE_WALKER_HPP_*/

@@ -27,3 +27,8 @@
  */
 
 #include <ros/ros.h>
+#include <walker.h>
+
+int main(int argc, char** argv) {
+
+}
