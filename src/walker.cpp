@@ -25,12 +25,11 @@
 /*
  * @brief: Header files for walker.cpp
  */
-
-#include <iostream>
+#include "include/walker.h"
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
-#include "walker.h"
+#include <iostream>
 
 /*
  * @brief: Implementation of the laserScanCallback method of walker class
@@ -73,7 +72,7 @@ walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
     // Initialize twist
     twist.linear.x = 0;
     twist.linear.y = 0;
-    twist.linear.y = 0;
+    twist.linear.z = 0;
     twist.angular.x = 0;
     twist.angular.y = 0;
     twist.angular.z = 0;
@@ -90,9 +89,7 @@ walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
     ros::spinOnce();
     loopRate.sleep();
   }
-
 }
-
 walker::~walker() {
   std::cout << "Destructor called !";
 }
