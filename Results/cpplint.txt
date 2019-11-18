@@ -1,4 +1,6 @@
-Done processing ./src/Turtlebot-walker-algorithm/src/main.cpp
-Done processing ./src/Turtlebot-walker-algorithm/src/walker.cpp
-Done processing ./src/Turtlebot-walker-algorithm/include/walker.h
+Done processing ./src/turtlebot_walker_algorithm/src/main.cpp
+./src/turtlebot_walker_algorithm/src/walker.cpp:28:  Include the directory when naming .h files  [build/include_subdir] [4]
+Done processing ./src/turtlebot_walker_algorithm/src/walker.cpp
+Total errors found: 1
+
 

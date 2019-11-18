@@ -25,7 +25,7 @@
 /*
  * @brief: Header files for walker.cpp
  */
-#include "include/walker.h"
+#include "walker.h"
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
@@ -37,7 +37,7 @@
  */
 void walker::laserScanCallback(const sensor_msgs::LaserScan::ConstPtr &range) {
   for (auto i = 0; i < range->ranges.size(); i++) {
-    if (range->ranges[i] < 0.3) {
+    if (range->ranges[i] < 0.2) {
       obstacleRange = true;
       return;
     }
@@ -64,25 +64,25 @@ bool walker::obstacleInRange() {
 walker::walker(ros::NodeHandle nh, ros::Subscriber subs, ros::Publisher pub) {
   linearVel = 0.4;
   angularVel = 1.0;
-  pub = nh.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1);
+  pub = nh.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity",
+                                           1000);
   subs = nh.subscribe<sensor_msgs::LaserScan>("/scan", 1000,
                                               &walker::laserScanCallback, this);
-  ros::Rate loopRate(5);
+  // Initialize twist
+  twist.linear.x = 0;
+  twist.linear.y = 0;
+  twist.linear.z = 0;
+  twist.angular.x = 0;
+  twist.angular.y = 0;
+  twist.angular.z = 0;
+  pub.publish(twist);
+  ros::Rate loopRate(10);
   while (ros::ok()) {
-    // Initialize twist
-    twist.linear.x = 0;
-    twist.linear.y = 0;
-    twist.linear.z = 0;
-    twist.angular.x = 0;
-    twist.angular.y = 0;
-    twist.angular.z = 0;
     if (obstacleInRange()) {
       ROS_INFO_STREAM("The obstacle is in the range, Turning...");
-      twist.linear.x = 0.0;
       twist.angular.z = angularVel;
     } else {
       ROS_INFO_STREAM("Moving forward, No obstacle present");
-      twist.angular.z = 0.0;
       twist.linear.x = linearVel;
     }
     pub.publish(twist);
