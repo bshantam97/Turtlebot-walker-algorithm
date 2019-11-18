@@ -1,4 +1,5 @@
 # ENPM808X Turtlebot-walker-algorithm
+[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](LICENSE.md)
 ## Overview of the project
 
 For this assignment we had to implement a simple walker algorithm in which the 
