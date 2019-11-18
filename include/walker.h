@@ -26,11 +26,12 @@
  * @brief: Include guards for the file walker.h
  */
 
-#ifndef INCLUDE_WALKER_HPP_
-#define INCLUDE_WALKER_HPP_
+#ifndef INCLUDE_WALKER_H_
+#define INCLUDE_WALKER_H_
 
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
+#include <geometry_msgs/Twist.h>
 
 class walker {
  public:
@@ -58,7 +59,13 @@ class walker {
   bool obstacleInRange();
 
  private:
+  // bool variable to signify whether object is in range or not
   bool obstacleRange;
-};
 
-#endif /*INCLUDE_WALKER_HPP_*/
+  // Turtlebot linear velocity
+  float linearVel;
+
+  // Turtlebot angular velocty
+  float angularVel;
+};
+#endif  // INCLUDE_WALKER_H_

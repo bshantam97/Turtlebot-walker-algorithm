@@ -27,3 +27,12 @@
  */
 
 #include <ros/ros.h>
+#include <walker.h>
+
+int main(int argc, char** argv) {
+  ros::init(argc, argv, "walker");
+  ros::NodeHandle nh;
+  ros::Subscriber subs;
+  ros::Publisher pub;
+  walker walker(nh, subs, pub);
+}
