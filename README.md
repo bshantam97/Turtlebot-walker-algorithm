@@ -64,10 +64,10 @@ rosrun turtlebot_walker_algorithm walker
 ### To inspect the bag file use the following command
 ```
 cd ~/catkin_ws/src/turtlebot_walker_algorithm/Results
-rosbag info record.bag
+rosbag info turtlebot_walker_algorithm.bag
 ```
 ### To play the bag file recording 
 ```
 cd ~/catkin_ws/src/turtlebot_walker_algorithm/Results
-rosbag play record.bag
+rosbag play turtlebot_walker_algorithm.bag
 ```
