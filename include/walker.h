@@ -62,9 +62,6 @@ class walker {
   // bool variable to signify whether object is in range or not
   bool obstacleRange;
 
-  // Object to get linear and angular velocity
-  geometry_msgs::Twist twist;
-
   // Turtlebot linear velocity
   float linearVel;
 
